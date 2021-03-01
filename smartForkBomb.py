@@ -7,7 +7,7 @@ Purpose: Way easier than trying to find the right payload, this is a catch-all a
 
 """
 
-import platform, os, sleep
+import platform, os
 
 def get_platform():
     if platform.system() == 'Linux':
